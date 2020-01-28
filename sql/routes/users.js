@@ -1,12 +1,17 @@
 var express = require('express');
+var app = express();
 var router = express.Router();
-const sql = require('mssql')
+var cors = require('cors');
+var createError = require('http-errors');
+const sql = require('mssql');
 const config = {
   user: 'bellati.samuele',  //Vostro user name
   password: 'xxx123#', //Vostra password
   server: "213.140.22.237",  //Stringa di connessione
   database: 'bellati.samuele', //(Nome del DB)
 }
+
+app.use(cors())
 
 /* GET users listing. */
 router.get('/unit', function(req, res, next) {
@@ -36,6 +41,27 @@ router.get('/search/:name', function(req, res, next) {
     });
   });
 });
+
+
+// POST REQUEST
+router.post('/', function (req, res, next) {
+  console.log(req.body);
+  // Add a new Unit  
+  let unit = req.body;
+  if (!unit) {
+    next(createError(400 , "Please provide a correct unit"));
+  }
+  sql.connect(config, err => {
+    let sqlInsert = `INSERT INTO dbo.[cr-unit-attributes] (Unit,Cost,Hit_Speed) 
+                     VALUES ('${unit.Unit}','${unit.Cost}','${unit.Hit_Speed}')`;
+    let sqlRequest = new sql.Request();
+    sqlRequest.query(sqlInsert, (error, results) => {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
+    });
+  })
+});
+
 
 module.exports = router;
 
