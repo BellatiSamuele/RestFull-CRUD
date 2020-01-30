@@ -1,0 +1,38 @@
+{
+    "recordsets": [
+        [
+            {
+                "Unit": "Archers",
+                "Cost": "3",
+                "Hit_Speed": "1.2 sec",
+                "Speed": "Medium (60)",
+                "Deploy_Time": "1 sec",
+                "Range": "5",
+                "Target": "Air &amp; Ground",
+                "Count": "x2",
+                "Transport": "Ground",
+                "Type": "Troop",
+                "Rarity": "Common"
+            }
+        ]
+    ],
+    "recordset": [
+        {
+            "Unit": "Archers",
+            "Cost": "3",
+            "Hit_Speed": "1.2 sec",
+            "Speed": "Medium (60)",
+            "Deploy_Time": "1 sec",
+            "Range": "5",
+            "Target": "Air &amp; Ground",
+            "Count": "x2",
+            "Transport": "Ground",
+            "Type": "Troop",
+            "Rarity": "Common"
+        }
+    ],
+    "output": {},
+    "rowsAffected": [
+        1
+    ]
+}
