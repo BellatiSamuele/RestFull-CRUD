@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var cors = require('cors');
+
 var createError = require('http-errors');
 const sql = require('mssql');
+
 const config = {
   user: 'bellati.samuele',  //Vostro user name
   password: 'xxx123#', //Vostra password
@@ -11,7 +12,7 @@ const config = {
   database: 'bellati.samuele', //(Nome del DB)
 }
 
-app.use(cors())
+
 
 /* GET users listing. */
 router.get('/unit', function(req, res, next) {
