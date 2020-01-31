@@ -12,8 +12,6 @@ const config = {
   database: 'bellati.samuele', //(Nome del DB)
 }
 
-
-
 /* GET users listing. */
 router.get('/unit', function(req, res, next) {
   sql.connect(config, err => {
@@ -23,7 +21,7 @@ router.get('/unit', function(req, res, next) {
     let sqlRequest = new sql.Request();  //Oggetto che serve a creare le query
     sqlRequest.query('select * from dbo.[cr-unit-attributes]', (err, result) => {
         if (err) console.log(err); // ... error checks
-        res.send(result);  //Invio il risultato
+        res.render('list', {result: result.recordsets[0]});  //Invio il risultato
     });
   });
 });
@@ -62,6 +60,7 @@ router.post('/', function (req, res, next) {
     });
   })
 });
+
 
 
 module.exports = router;
