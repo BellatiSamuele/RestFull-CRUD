@@ -41,6 +41,21 @@ router.get('/search/:name', function(req, res, next) {
   });
 });
 
+router.get('/dettagli/:name', function(req, res, next) {
+
+    sql.connect(config, err => {
+    // ... error check
+    if(err) console.log(err);
+    // Query
+    let sqlRequest = new sql.Request();
+    sqlRequest.query(`select * from dbo.[cr-unit-attributes] where Unit = '${req.params.name}'`, (err, result) => {
+        // ... error checks
+        if (err) console.log(err);
+
+        res.render('unit', {unit: result.recordsets[0][0]});
+    });
+  });
+});
 
 // POST REQUEST
 router.post('/', function (req, res, next) {
@@ -61,6 +76,9 @@ router.post('/', function (req, res, next) {
   })
 });
 
+router.get('/insert', function(req, res, next) {
+  res.render('index');
+});
 
 
 module.exports = router;
