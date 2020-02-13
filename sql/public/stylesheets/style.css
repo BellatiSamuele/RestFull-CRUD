@@ -4,5 +4,34 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(0, 0, 0);
+  font-size: 15px
+}
+
+div {
+    text-align: center;
+}
+
+div.Common {
+  background-color: rgba(116, 116, 116, 0.89);
+}
+
+div.Rare {
+  background-color: rgba(211, 95, 0, 0.89);
+}
+
+div.Epic {
+  background-color: rgba(129, 0, 108, 0.89);
+}
+
+div.Legendary {
+  background-color: rgba(0, 247, 255, 0.89);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 50px;
+  background-color: rgb(9, 255, 0);
+  padding: 10px;
 }
